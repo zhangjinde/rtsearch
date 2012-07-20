@@ -1,17 +1,29 @@
 #时间仓促 只写个简单使用例子
 
 安装：
+   下载安装scws分词库
+    wget http://www.ftphp.com/scws/down/scws-1.2.0.tar.bz2
+    $tar jxvf scws-1.2.0.tar.bz2
+    $./configure --prefix=/usr/local/scws ; make ; make install
     
-    rtsearch只使用znet
-    cd znet
+    词典：
+    $wget http://www.ftphp.com/scws/down/scws-dict-chs-utf8.tar.bz2
+    $tar jxvf scws-dict-chs-utf8.tar.bz2
+
+    
+    安装rtsearch服务：
+    rtsearch使用znet
+    $cd znet
     make
-    cd rtsearch
+    $cd rtsearch
     make
+    
+    将上面的词典拷贝到rtsearch/bin目录，并修改对应的bin/config.json配置项
 
 初步完成一个简易实时搜索，c实现，中文分词支持(使用scws）。
 服务器与客户端使用redis协议通信，这样客户端开发可以直接使用redis接口库（set，get，delete）
 操作。插入和返回数据使用json格式。
-
+python:
 # -*- coding: utf-8 -*-
 import redis 
  
