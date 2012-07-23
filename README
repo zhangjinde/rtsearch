@@ -31,14 +31,17 @@ import redis
 r = redis.StrictRedis(host='127.0.0.1', port=6888)#这里连接的是实现redis协议的服务，不是redis。 
 while 1:
     #type：标示数据大类。id:就是id，term：存入的内容，score：排序用的值，data：这个看用户需求存什么东西
-    item = '{"type":"user","id":10,"term":"我是一个伟大的领导人物，不一般啊","score":100,"data":"url://"}'
+    item = '{"type":"user","id":10,"term":"我是一个伟大的领导人物，不一般啊",
+             "score":100,"data":"url://"}'
     r.set('data',item)
-    item = '{"type":"user","id":11,"term":"我是一个伟大的领导人物","score":99,"data":"url://"}'
+    item = '{"type":"user","id":11,"term":"我是一个伟大的领导人物",
+             "score":99,"data":"url://"}'
     r.set('data',item)
  
     #r.delete(item)    
-    #keywords:关键语句（后台会自动分词查询）types:搜索哪些类别的数据，start，num用来翻页，sort：-1按插入时的score值倒序，1正序。
-    query = '{"keywords":"领导","types":[{"type":"user","start":0,"num":10,"sort":-1},{"type":"tags","start":0,"num":10,"sort":-1}]}'
+    #keywords:关键语句（后台会自动分词查询）types:搜索哪些类别的数据，start，num用来翻页，sort：-1按插入时的score值倒序，1正序
+    query = '{"keywords":"领导","types":[{"type":"user","start":0,"num":10,"sort":-1},
+              {"type":"tags","start":0,"num":10,"sort":-1}]}'
     rv = r.get(query)
     print rv
 
