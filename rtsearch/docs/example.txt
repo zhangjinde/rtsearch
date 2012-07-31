@@ -27,7 +27,7 @@ while 1:
  
     #r.delete(item)    
     #keywords:关键语句（后台会自动分词查询）types:搜索哪些类别的数据，start，num用来翻页，sort：-1按插入时的score值倒序，1正序。
-    query = '{"keywords":"周四海伟大","types":[{"type":"user","start":0,"num":10,"sort":-1},{"type":"tags","start":0,"num":10,"sort":-1}]}'
+    query = '{"keywords":"伟大领导","types":[{"type":"user","start":0,"num":10,"sort":-1},{"type":"tags","start":0,"num":10,"sort":-1}]}'
     rv = r.get(query)
     print rv
 
